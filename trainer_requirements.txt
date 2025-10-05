@@ -1,0 +1,7 @@
+tensorflow==2.12.0
+numpy
+pandas
+matplotlib
+gymnasium
+stable-baselines3
+
