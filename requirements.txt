@@ -1,0 +1,7 @@
+tensorflow==2.12.0
+google-cloud-bigquery
+google-cloud-storage
+numpy
+pandas
+scikit-learn
+tensorflow-io
