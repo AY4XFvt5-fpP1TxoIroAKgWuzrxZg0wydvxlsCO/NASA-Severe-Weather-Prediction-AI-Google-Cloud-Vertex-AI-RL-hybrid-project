@@ -1,0 +1,6 @@
+FROM gcr.io/deeplearning-platform-release/tf2-gpu.2-12:latest
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install -r requirements.txt
+COPY . .
+ENTRYPOINT ["python", "train_lstm.py"]
