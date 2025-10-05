@@ -1,0 +1,23 @@
+# deploy/vertex_train_job.yaml
+# Vertex AI Custom Job spec for Severe Weather AI training
+
+display_name: severe-weather-train-job
+job_spec:
+  worker_pool_specs:
+    - machine_spec:
+        machine_type: n1-standard-16
+        accelerator_type: NVIDIA_TESLA_T4
+        accelerator_count: 1
+      replica_count: 1
+      container_spec:
+        image_uri: gcr.io/YOUR_PROJECT_ID/severe-weather-trainer:latest
+        command: ["python", "train.py"]
+        args:
+          - "--epochs=30"
+        env:
+          - name: BQ_SEQUENCE_TABLE
+            value: "YOUR_PROJECT.YOUR_DATASET.sequence_features"
+          - name: MODEL_DIR
+            value: "gs://YOUR_BUCKET/models/severe-weather"
+          - name: GCP_PROJECT
+            value: "YOUR_PROJECT_ID"
